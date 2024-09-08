@@ -2,6 +2,8 @@ const express=require('express');
 const mongoose=require('mongoose');
 const Listing = require('./modules/listing');
 const path = require('path');
+const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
 
 const app=express();
 const port=8080;
@@ -9,6 +11,9 @@ const port=8080;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); 
 app.use(express.urlencoded({extended:true}));   // this is for the extract data from url
+app.use(methodOverride("_method"));
+app.engine('ejs',ejsMate);   // this is used to remove the similler layout
+app.use(express.static(path.join(__dirname, '/public')));
 
 main().then((res)=>{
     console.log("DB connected sucessfully")
@@ -56,11 +61,21 @@ app.get("/listings/:id/edit", async (req,res)=>{
     res.render('listings/edit',{listing});
 })
 
-app.put("/linstings/:id", async (req,res)=>{
+// Update route
+app.put("/listings/:id", async (req,res)=>{
     let {id}=req.params;
-    let newlisting=req.body;
+    let newlisting=req.body.listing;
+    console.log(newlisting);
+    await Listing.findByIdAndUpdate(id,{...newlisting}); // here to update require ...
+    res.redirect(`/listings/${id}`);
 })
 
+// Delete Route
+app.delete("/listings/:id",async (req,res)=>{
+    let {id}=req.params;
+    await Listing.findByIdAndDelete(id);
+    res.redirect('/listings');
+})
 
 app.get("/",(req,res)=>{
     res.send("server is working...");
