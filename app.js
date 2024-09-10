@@ -78,7 +78,7 @@ app.delete("/listings/:id",async (req,res)=>{
 })
 
 app.get("/",(req,res)=>{
-    res.send("server is working...");
+    res.redirect('/listings');
 })
 
 app.listen(port,()=>{
