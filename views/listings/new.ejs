@@ -6,37 +6,49 @@
     <h3 class="offset-2">Fill the details of your listing:</h3>
     <div class="row">
         <div class="col-8 offset-2">
-        <form method="post" action="/listings">
+        <form method="post" action="/listings" novalidate class="needs-validation">
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
-                <input type="text" name="listing[title]" class="form-control" placeholder="Enter Ttile">
+                <input type="text" name="listing[title]" class="form-control" placeholder="Enter Ttile" required>
+                <div class="valid-feedback">Looks Valid</div>
+                <div class="invalid-feedback">looks Invalid! Use valid Title.</div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description :</label>
-                <textarea type="text" name="listing[description]" class="form-control" placeholder="Enter description"></textarea>
+                <textarea type="text" name="listing[description]" class="form-control" placeholder="Enter description" required></textarea>
+                <div class="valid-feedback">Looks Valid</div>
+                <div class="invalid-feedback">looks Invalid! Use valid discription.</div>
             </div>
             
             <div class="mb-3">
                 <label for="image" class="form-label">Image Url :</label>
                 <input type="text" name="listing[image]" class="form-control" placeholder="Enter image URL">
+                <div class="valid-feedback">Looks Valid</div>
             </div>
             <div class="row">
                 <div class="mb-3 col-md-4">
                     <label for="price" class="form-label">Price :</label>
-                    <input type="text" name="listing[price]" class="form-control" placeholder="Enter price">
+                    <input  name="listing[price]" class="form-control" placeholder="Enter price" >
+                    <!-- <div class="valid-feedback">Looks Valid</div>
+                    <div class="invalid-feedback">looks Invalid!</div> -->
                 </div>
                 <div class="mb-3 col-md-8">
                     <label for="country" class="form-label">Country :</label>
-                    <input type="text" name="listing[country]" class="form-control" placeholder="Enter Country">
+                    <input type="text" name="listing[country]" class="form-control" placeholder="Enter Country" required>
+                    <div class="valid-feedback">Looks Valid</div>
+                    <div class="invalid-feedback">looks Invalid! Use valid Country.</div>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="location" class="form-label">Location :</label>
-                <input type="text" name="listing[location]" class="form-control" placeholder="Enter location">
+                <input type="text" name="listing[location]" class="form-control" placeholder="Enter location" required>
+                <div class="valid-feedback">Looks Valid</div>
+                <div class="invalid-feedback">looks Invalid! Use valid location.</div>
             </div>
             <button class="btn btn-dark add-btn">Create Post</button>
         </form>
         <br>
         </div>
     </div>
+    <script src="/js/script.js"></script>
 </body>

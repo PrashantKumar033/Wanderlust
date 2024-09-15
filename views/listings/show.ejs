@@ -10,7 +10,7 @@
             <img src="<%=listing.image%>" class="card-img-top" alt="listing_image" style="height: 16rem;">
             <p class="mt-2"><b>Title :<%= listing.title %></b></p>
             <p><b>Description :</b><%= listing.description %></p>
-            <p> <b>Price :</b>&#8377; <%= listing.price.toLocaleString("en-IN") %>/ night</p>
+            <p> <b>Price :</b>&#8377;<%= (listing.price ? listing.price.toLocaleString("en-IN") : "N/A") %>/ night</p>
             <p><b>Location :</b><%= listing.location %></p>
             <p><b>Country : </b><%= listing.country %></p>
             <div class="btns">
