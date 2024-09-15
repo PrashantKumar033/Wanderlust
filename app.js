@@ -101,19 +101,7 @@ app.delete("/listings/:id", wrapAsync(async (req,res)=>{
 }))
 
 app.get("/",(req,res)=>{
-    res.redirect('/listings');
-})
-
-
-// middlewares
-app.all('*',(req,res,next)=>{
-    next(new ExpressError(404,"Page not found!"));
-})
-
-app.use((err,req,res,next)=>{
-    let {statusCode=500,message="something went wrong!"} = err;
-    res.status(statusCode).render('error.ejs',{statusCode,message});
-    // res.status(statusCode).send(message);
+    res.send("server is working...");
 })
 
 app.listen(port,()=>{
